@@ -1,0 +1,10 @@
+{
+  "name": "Emoji Copy",
+  "description": "A simple Chrome extension to copy emojis to clipboard",
+  "version": "1.0",
+  "manifest_version": 3,
+  "action": {
+    "default_popup": "./popup/popup.html",
+    "default_icon": "./icons/icon.png"
+  }
+}
