@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="popup.css" />
+    <title>Emoji Copy</title>
+  </head>
+  <body>
+    <nav class="categories">
+      <button class="category-item active" data-category="faces">
+        <img src="images/smile.svg" alt="" />
+      </button>
+
+      <button class="category-item" data-category="animals-nature">
+        <img src="images/dog.svg" alt="" />
+      </button>
+
+      <button class="category-item" data-category="food-drink">
+        <img src="images/apple.svg" alt="" />
+      </button>
+
+      <button class="category-item" data-category="activities">
+        <img src="images/volleyball.svg" alt="" />
+      </button>
+
+      <button class="category-item" data-category="travel-places">
+        <img src="images/earth.svg" alt="" />
+      </button>
+    </nav>
+
+    <div class="container">
+      <div class="grid" id="emoji-list">
+        <!-- Emojis will be rendered here -->
+      </div>
+    </div>
+
+    <script type="module" src="popup.js"></script>
+  </body>
+</html>

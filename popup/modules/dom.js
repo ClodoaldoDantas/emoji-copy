@@ -1,9 +1,5 @@
-import { emojiCategories } from "./data/emojis-categories.js";
-
-function renderEmojiList({ categoryIndex }) {
-  const data = emojiCategories[categoryIndex].emojis;
+export function renderEmojiList({ data }) {
   const emojiList = document.getElementById("emoji-list");
-
   emojiList.innerHTML = "";
 
   data.forEach((item) => {
@@ -14,7 +10,3 @@ function renderEmojiList({ categoryIndex }) {
     emojiList.appendChild(button);
   });
 }
-
-document.addEventListener("DOMContentLoaded", () => {
-  renderEmojiList({ categoryIndex: 0 });
-});

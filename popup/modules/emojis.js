@@ -1,8 +1,8 @@
 export const emojiCategories = [
   {
     id: "faces",
+    icon: "smile",
     name: "Rostos & Pessoas",
-    icon: "😀",
     emojis: [
       {
         emoji: "😀",
@@ -202,8 +202,8 @@ export const emojiCategories = [
   },
   {
     id: "animals-nature",
+    icon: "dog",
     name: "Animais & Natureza",
-    icon: "🐶",
     emojis: [
       {
         emoji: "🐶",
@@ -278,8 +278,8 @@ export const emojiCategories = [
   },
   {
     id: "food-drink",
+    icon: "apple",
     name: "Comida & Bebida",
-    icon: "🍎",
     emojis: [
       { emoji: "🍎", name: "maçã vermelha", keywords: ["maçã", "fruta"] },
       { emoji: "🍏", name: "maçã verde", keywords: ["maçã", "fruta"] },
@@ -358,8 +358,8 @@ export const emojiCategories = [
   },
   {
     id: "activities",
+    icon: "volleyball",
     name: "Atividades",
-    icon: "⚽",
     emojis: [
       {
         emoji: "⚽",
@@ -506,8 +506,8 @@ export const emojiCategories = [
   },
   {
     id: "travel-places",
+    icon: "earth",
     name: "Viagem & Lugares",
-    icon: "🚗",
     emojis: [
       { emoji: "🚗", name: "carro", keywords: ["carro", "veículo"] },
       { emoji: "🚕", name: "táxi", keywords: ["táxi", "veículo"] },
