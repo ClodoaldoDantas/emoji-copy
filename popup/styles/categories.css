@@ -8,6 +8,10 @@
   border-bottom: 1px solid var(--zinc-300);
 }
 
+.categories.hidden {
+  display: none;
+}
+
 .btn-category {
   opacity: 0.5;
   transition: opacity 0.2s;
