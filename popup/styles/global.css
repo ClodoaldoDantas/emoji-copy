@@ -1,0 +1,31 @@
+*,
+*::after,
+*::before {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Arial", sans-serif;
+  width: 400px;
+  height: auto;
+}
+
+.btn {
+  background-color: transparent;
+  border: 0;
+
+  height: 2rem;
+  width: auto;
+
+  font-size: 1.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+
+.hidden {
+  display: none;
+}

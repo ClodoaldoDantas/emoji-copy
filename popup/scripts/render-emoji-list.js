@@ -6,7 +6,8 @@ export function renderEmojiList({ data }) {
 
   data.forEach((item) => {
     const button = document.createElement("button");
-    button.classList.add("emoji-btn");
+    button.classList.add("btn");
+    button.classList.add("btn-emoji");
     button.textContent = item.emoji;
     button.addEventListener("click", () => copyToClipboard(item.emoji));
 

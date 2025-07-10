@@ -1,0 +1,19 @@
+.categories {
+  padding: 0.5rem 1rem;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(0, 1fr));
+  justify-items: center;
+  gap: 0.5rem;
+
+  border-bottom: 1px solid #ccc;
+}
+
+.btn-category {
+  opacity: 0.5;
+  transition: opacity 0.2s;
+}
+
+.btn-category:hover,
+.btn-category.active {
+  opacity: 1;
+}

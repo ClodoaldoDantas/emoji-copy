@@ -3,7 +3,7 @@ import { renderEmojiList } from "./render-emoji-list.js";
 
 export function changeActiveTab(event) {
   const selectedButton = event.currentTarget;
-  const allButtons = document.querySelectorAll(".category-item");
+  const allButtons = document.querySelectorAll(".btn-category");
 
   allButtons.forEach((btn) => btn.classList.remove("active"));
   selectedButton.classList.add("active");

@@ -6,7 +6,8 @@ export function renderCategories() {
 
   emojiCategories.forEach((category, index) => {
     const button = document.createElement("button");
-    button.classList.add("category-item");
+    button.classList.add("btn");
+    button.classList.add("btn-category");
 
     if (index === 0) {
       button.classList.add("active");
