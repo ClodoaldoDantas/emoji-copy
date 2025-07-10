@@ -47,6 +47,20 @@ body {
   opacity: 1;
 }
 
+.message {
+  background-color: #f0fdf4;
+  padding: 0.5rem 1rem;
+  border-bottom: 1px solid #b9f8cf;
+
+  text-align: center;
+  font-size: 1rem;
+  color: #008236;
+}
+
+.message.hidden {
+  display: none;
+}
+
 .container {
   max-height: 320px;
   overflow-y: auto;
