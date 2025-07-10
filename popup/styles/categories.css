@@ -5,7 +5,7 @@
   justify-items: center;
   gap: 0.5rem;
 
-  border-bottom: 1px solid #ccc;
+  border-bottom: 1px solid var(--zinc-300);
 }
 
 .btn-category {

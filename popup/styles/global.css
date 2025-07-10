@@ -6,6 +6,16 @@
   box-sizing: border-box;
 }
 
+:root {
+  --green-50: #f0fdf4;
+  --green-200: #bbf7d0;
+  --green-700: #008236;
+  --zinc-100: #f5f4f4;
+  --zinc-300: #d8d3d4;
+  --zinc-400: #9f9fa9;
+  --zinc-900: #1b1718;
+}
+
 body {
   font-family: "Arial", sans-serif;
   width: 400px;

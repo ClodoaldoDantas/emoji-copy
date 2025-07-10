@@ -1,4 +1,5 @@
 @import "./styles/global.css";
+@import "./styles/search.css";
 @import "./styles/categories.css";
 @import "./styles/message.css";
 @import "./styles/emoji-list.css";
