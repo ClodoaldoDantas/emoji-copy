@@ -956,7 +956,9 @@ export const getCategoryIndexById = (id) => {
 };
 
 export const searchEmojis = (term) => {
-  const allEmojis = categories.flatMap((category) => category.emojis);
+  const allEmojis = categories
+    .filter((category) => category.id !== "recents")
+    .flatMap((category) => category.emojis);
 
   const filteredEmojis = allEmojis.filter((item) => {
     return (
