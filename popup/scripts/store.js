@@ -1,4 +1,15 @@
-export const emojiCategories = [
+import { updateCategoryList } from "./update-category-list.js";
+
+const STORAGE_KEY = "@emoji-copy:recents";
+const MAX_RECENTS_EMOJIS = 10;
+
+const categories = [
+  {
+    id: "recents",
+    icon: "clock",
+    name: "Recentes",
+    emojis: [],
+  },
   {
     id: "faces",
     icon: "smile",
@@ -908,3 +919,62 @@ export const emojiCategories = [
     ],
   },
 ];
+
+export const getRecentsEmojisFromStorage = () => {
+  const recents = localStorage.getItem(STORAGE_KEY);
+  return recents ? JSON.parse(recents) : [];
+};
+
+export const saveEmojiToStorage = (item) => {
+  const recentsEmojis = getRecentsEmojisFromStorage();
+  const updatedRecentsEmojis = [item, ...recentsEmojis];
+
+  if (updatedRecentsEmojis.length > MAX_RECENTS_EMOJIS) {
+    updatedRecentsEmojis.pop();
+  }
+
+  categories[0].emojis = [...updatedRecentsEmojis];
+  localStorage.setItem(STORAGE_KEY, JSON.stringify(updatedRecentsEmojis));
+};
+
+export const getEmojiCategories = () => {
+  const recentsEmojis = getRecentsEmojisFromStorage();
+
+  if (recentsEmojis.length > 0) {
+    categories[0].emojis = [...recentsEmojis];
+  }
+
+  return categories;
+};
+
+export const getCategoryById = (id) => {
+  return categories.find((category) => category.id === id);
+};
+
+export const getCategoryIndexById = (id) => {
+  return categories.findIndex((category) => category.id === id);
+};
+
+export const searchEmojis = (term) => {
+  const allEmojis = categories.flatMap((category) => category.emojis);
+
+  const filteredEmojis = allEmojis.filter((item) => {
+    return (
+      item.name.toLowerCase().includes(term) ||
+      item.keywords.some((keyword) => keyword.toLowerCase().includes(term))
+    );
+  });
+
+  return filteredEmojis;
+};
+
+export const addRecentEmoji = (item) => {
+  const itemAlreadyExists = categories[0].emojis.some(({ name, emoji }) => {
+    return name === item.name && emoji === item.emoji;
+  });
+
+  if (!itemAlreadyExists) {
+    saveEmojiToStorage(item);
+    updateCategoryList({ categories });
+  }
+};

@@ -1,15 +1,16 @@
-import { changeActiveTab } from "./change-active-tab.js";
-import { emojiCategories } from "../data/emojis.js";
+import { handleChangeActiveTab } from "./handle-change-active-tab.js";
 
-export function renderCategories() {
+export function renderCategories({ data, activeIndex = 0 }) {
   const categories = document.getElementById("emoji-categories");
 
-  emojiCategories.forEach((category, index) => {
+  categories.innerHTML = "";
+
+  data.forEach((category, index) => {
     const button = document.createElement("button");
     button.classList.add("btn");
     button.classList.add("btn-category");
 
-    if (index === 0) {
+    if (index === activeIndex) {
       button.classList.add("active");
     }
 
@@ -20,7 +21,7 @@ export function renderCategories() {
     image.src = `./images/${category.icon}.svg`;
 
     button.appendChild(image);
-    button.addEventListener("click", changeActiveTab);
+    button.addEventListener("click", handleChangeActiveTab);
 
     categories.appendChild(button);
   });

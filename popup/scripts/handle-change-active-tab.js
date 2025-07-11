@@ -1,7 +1,7 @@
-import { emojiCategories } from "../data/emojis.js";
 import { renderEmojiList } from "./render-emoji-list.js";
+import { getCategoryById } from "./store.js";
 
-export function changeActiveTab(event) {
+export function handleChangeActiveTab(event) {
   const selectedButton = event.currentTarget;
   const allButtons = document.querySelectorAll(".btn-category");
 
@@ -9,9 +9,7 @@ export function changeActiveTab(event) {
   selectedButton.classList.add("active");
 
   const categoryId = selectedButton.getAttribute("data-category");
-  const category = emojiCategories.find(
-    (category) => category.id === categoryId
-  );
+  const category = getCategoryById(categoryId);
 
   if (category) {
     renderEmojiList({ data: category.emojis });
