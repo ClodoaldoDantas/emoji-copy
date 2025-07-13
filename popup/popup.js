@@ -5,6 +5,7 @@ import { renderCategories } from "./scripts/ui/render-categories.js";
 import { renderEmojiList } from "./scripts/ui/render-emoji-list.js";
 import { showMessage } from "./scripts/ui/show-message.js";
 import { hideCategories } from "./scripts/ui/hide-categories.js";
+import { debounce } from "./scripts/debounce.js";
 
 const handleChangeCategory = (event) => {
   const selectedButton = event.currentTarget;
@@ -19,12 +20,10 @@ const handleEmojiClick = (categoryId, emojiItem) => {
   });
 };
 
-const handleSearchEmojis = (event) => {
-  if (event.key !== "Enter") return;
-
+const handleSearchEmojis = debounce((event) => {
   const searchTerm = event.target.value.trim().toLowerCase();
   store.searchEmojis(searchTerm);
-};
+}, 300);
 
 const updateUI = (state) => {
   if (state.isSearching) {
@@ -53,4 +52,4 @@ document.addEventListener("DOMContentLoaded", () => {
 
 document
   .getElementById("emoji-search")
-  .addEventListener("keydown", handleSearchEmojis);
+  .addEventListener("input", handleSearchEmojis);
