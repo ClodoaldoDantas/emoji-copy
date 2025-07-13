@@ -1,5 +1,8 @@
 import { emojiCategories } from "../data/emojis.js";
 import { Observable } from "./observable.js";
+import { Storage } from "./storage.js";
+
+const RECENTS_STORAGE_KEY = "@emoji-copy:recents";
 
 class Store {
   constructor() {
@@ -14,14 +17,12 @@ class Store {
   }
 
   #createRecentsCategory(emojis) {
-    const recentsCategory = {
+    this.state.categories.unshift({
       id: "recents",
       icon: "clock",
       name: "Recentes",
       emojis,
-    };
-
-    this.state.categories.unshift(recentsCategory);
+    });
   }
 
   #getCategoryIndexById(categoryId) {
@@ -29,10 +30,7 @@ class Store {
   }
 
   init() {
-    const recentsEmojisStorage = localStorage.getItem("@emoji-copy:recents");
-    const recentsEmojis = recentsEmojisStorage
-      ? JSON.parse(recentsEmojisStorage)
-      : [];
+    const recentsEmojis = Storage.getItem(RECENTS_STORAGE_KEY, []);
 
     if (recentsEmojis.length > 0) {
       this.#createRecentsCategory(recentsEmojis);
@@ -63,9 +61,14 @@ class Store {
 
       if (!emojiExists) {
         this.state.categories[recentsCategoryIndex].emojis.unshift(emojiItem);
+        Storage.setItem(
+          RECENTS_STORAGE_KEY,
+          this.state.categories[recentsCategoryIndex].emojis
+        );
       }
     } else {
       this.#createRecentsCategory([emojiItem]);
+      Storage.setItem(RECENTS_STORAGE_KEY, [emojiItem]);
     }
 
     const currentCategoryIndex = this.#getCategoryIndexById(currentCategoryId);

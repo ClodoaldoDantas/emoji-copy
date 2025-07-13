@@ -6,26 +6,27 @@ import { renderEmojiList } from "./scripts/ui/render-emoji-list.js";
 import { showMessage } from "./scripts/ui/show-message.js";
 import { hideCategories } from "./scripts/ui/hide-categories.js";
 
-function handleChangeCategory(event) {
+const handleChangeCategory = (event) => {
   const selectedButton = event.currentTarget;
   const categoryId = selectedButton.getAttribute("data-category");
   store.setActiveCategory(categoryId);
-}
+};
 
-function handleEmojiClick(categoryId, emojiItem) {
-  copyEmojiToClipboard(emojiItem.emoji);
-  showMessage(`${emojiItem.emoji} copiado para a área de transferência!`);
-  store.addEmojiToRecents(categoryId, emojiItem);
-}
+const handleEmojiClick = (categoryId, emojiItem) => {
+  copyEmojiToClipboard(emojiItem.emoji).then(() => {
+    showMessage(`${emojiItem.emoji} copiado para a área de transferência!`);
+    store.addEmojiToRecents(categoryId, emojiItem);
+  });
+};
 
-function handleSearchEmojis(event) {
+const handleSearchEmojis = (event) => {
   if (event.key !== "Enter") return;
 
   const searchTerm = event.target.value.trim().toLowerCase();
   store.searchEmojis(searchTerm);
-}
+};
 
-function updateUI(state) {
+const updateUI = (state) => {
   if (state.isSearching) {
     hideCategories();
   } else {
@@ -43,7 +44,7 @@ function updateUI(state) {
     emojis: state.isSearching ? state.filteredEmojis : category.emojis,
     onClickEmoji: handleEmojiClick,
   });
-}
+};
 
 document.addEventListener("DOMContentLoaded", () => {
   store.emitter.subscribe(updateUI);
