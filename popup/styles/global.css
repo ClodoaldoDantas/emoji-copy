@@ -13,6 +13,7 @@
   --zinc-100: #f5f4f4;
   --zinc-300: #d8d3d4;
   --zinc-400: #9f9fa9;
+  --zinc-500: #71717b;
   --zinc-900: #1b1718;
 }
 
@@ -34,4 +35,19 @@ body {
   align-items: center;
   justify-content: center;
   cursor: pointer;
+}
+
+.empty-message {
+  display: none;
+  color: var(--zinc-500);
+  font-size: 0.875rem;
+}
+
+.empty-message::before {
+  content: "🔍";
+  margin-right: 0.25rem;
+}
+
+.empty-message.visible {
+  display: block;
 }
