@@ -1,18 +1,18 @@
 export class Storage {
-  static setItem(key, value) {
+  static async setItem(key, value) {
     try {
-      localStorage.setItem(key, JSON.stringify(value));
+      await chrome.storage.local.set({ [key]: value });
     } catch (error) {
-      console.error("Erro ao salvar no localStorage:", error);
+      console.error("Erro ao salvar no chrome.storage:", error);
     }
   }
 
-  static getItem(key, defaultValue = null) {
+  static async getItem(key, defaultValue = null) {
     try {
-      const item = localStorage.getItem(key);
-      return item === null ? defaultValue : JSON.parse(item);
+      const result = await chrome.storage.local.get([key]);
+      return result[key] !== undefined ? result[key] : defaultValue;
     } catch (error) {
-      console.error("Erro ao recuperar do localStorage:", error);
+      console.error("Erro ao recuperar do chrome.storage:", error);
       return defaultValue;
     }
   }

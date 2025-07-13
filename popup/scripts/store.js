@@ -3,6 +3,7 @@ import { Observable } from "./observable.js";
 import { Storage } from "./storage.js";
 
 const RECENTS_STORAGE_KEY = "@emoji-copy:recents";
+const MAX_RECENT_ITEMS = 10;
 
 class Store {
   constructor() {
@@ -29,8 +30,8 @@ class Store {
     return this.state.categories.findIndex((cat) => cat.id === categoryId);
   }
 
-  init() {
-    const recentsEmojis = Storage.getItem(RECENTS_STORAGE_KEY, []);
+  async init() {
+    const recentsEmojis = await Storage.getItem(RECENTS_STORAGE_KEY, []);
 
     if (recentsEmojis.length > 0) {
       this.#createRecentsCategory(recentsEmojis);
@@ -51,24 +52,28 @@ class Store {
     }
   }
 
-  addEmojiToRecents(currentCategoryId, emojiItem) {
+  async addEmojiToRecents(currentCategoryId, emojiItem) {
     const recentsCategoryIndex = this.#getCategoryIndexById("recents");
 
     if (recentsCategoryIndex !== -1) {
-      const emojiExists = this.state.categories[
-        recentsCategoryIndex
-      ].emojis.some((item) => item.name === emojiItem.name);
+      const recentsCategory = this.state.categories[recentsCategoryIndex];
+
+      const emojiExists = recentsCategory.emojis.some(
+        (item) => item.name === emojiItem.name
+      );
 
       if (!emojiExists) {
-        this.state.categories[recentsCategoryIndex].emojis.unshift(emojiItem);
-        Storage.setItem(
-          RECENTS_STORAGE_KEY,
-          this.state.categories[recentsCategoryIndex].emojis
-        );
+        recentsCategory.emojis.unshift(emojiItem);
+
+        if (recentsCategory.emojis.length > MAX_RECENT_ITEMS) {
+          recentsCategory.emojis.pop();
+        }
+
+        await Storage.setItem(RECENTS_STORAGE_KEY, recentsCategory.emojis);
       }
     } else {
       this.#createRecentsCategory([emojiItem]);
-      Storage.setItem(RECENTS_STORAGE_KEY, [emojiItem]);
+      await Storage.setItem(RECENTS_STORAGE_KEY, [emojiItem]);
     }
 
     const currentCategoryIndex = this.#getCategoryIndexById(currentCategoryId);
