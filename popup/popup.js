@@ -1,13 +1,53 @@
-import { getEmojiCategories } from "./scripts/store.js";
-import { renderCategories } from "./scripts/render-categories.js";
-import { renderEmojiList } from "./scripts/render-emoji-list.js";
-import { handleSearchEmojis } from "./scripts/handle-search-emojis.js";
+import { store } from "./scripts/store.js";
+import { copyEmojiToClipboard } from "./scripts/copy-emoji-to-clipboard.js";
+
+import { renderCategories } from "./scripts/ui/render-categories.js";
+import { renderEmojiList } from "./scripts/ui/render-emoji-list.js";
+import { showMessage } from "./scripts/ui/show-message.js";
+import { hideCategories } from "./scripts/ui/hide-categories.js";
+
+function handleChangeCategory(event) {
+  const selectedButton = event.currentTarget;
+  const categoryId = selectedButton.getAttribute("data-category");
+  store.setActiveCategory(categoryId);
+}
+
+function handleEmojiClick(categoryId, emojiItem) {
+  copyEmojiToClipboard(emojiItem.emoji);
+  showMessage(`${emojiItem.emoji} copiado para a área de transferência!`);
+  store.addEmojiToRecents(categoryId, emojiItem);
+}
+
+function handleSearchEmojis(event) {
+  if (event.key !== "Enter") return;
+
+  const searchTerm = event.target.value.trim().toLowerCase();
+  store.searchEmojis(searchTerm);
+}
+
+function updateUI(state) {
+  if (state.isSearching) {
+    hideCategories();
+  } else {
+    renderCategories({
+      categories: state.categories,
+      activeIndex: state.activeCategoryIndex,
+      onChangeCategory: handleChangeCategory,
+    });
+  }
+
+  const category = state.categories[state.activeCategoryIndex];
+
+  renderEmojiList({
+    categoryId: category.id,
+    emojis: state.isSearching ? state.filteredEmojis : category.emojis,
+    onClickEmoji: handleEmojiClick,
+  });
+}
 
 document.addEventListener("DOMContentLoaded", () => {
-  const categories = getEmojiCategories();
-
-  renderCategories({ data: categories });
-  renderEmojiList({ data: categories[0].emojis });
+  store.emitter.subscribe(updateUI);
+  store.init();
 });
 
 document
