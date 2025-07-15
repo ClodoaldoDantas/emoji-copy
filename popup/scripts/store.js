@@ -6,6 +6,8 @@ const RECENTS_STORAGE_KEY = "@emoji-copy:recents";
 const MAX_RECENT_ITEMS = 10;
 
 class Store {
+  #allEmojisCache = null;
+
   constructor() {
     this.state = {
       activeCategoryIndex: 0,
@@ -28,6 +30,16 @@ class Store {
 
   #getCategoryIndexById(categoryId) {
     return this.state.categories.findIndex((cat) => cat.id === categoryId);
+  }
+
+  #getAllEmojis() {
+    if (!this.#allEmojisCache) {
+      this.#allEmojisCache = this.state.categories
+        .filter((category) => category.id !== "recents")
+        .flatMap((category) => category.emojis);
+    }
+
+    return this.#allEmojisCache;
   }
 
   async init() {
@@ -90,12 +102,13 @@ class Store {
       return;
     }
 
-    const allEmojis = this.state.categories
-      .filter((category) => category.id !== "recents")
-      .flatMap((category) => category.emojis);
+    const allEmojis = this.#getAllEmojis();
 
     const filteredEmojis = allEmojis.filter((item) => {
-      return item.name.toLowerCase().includes(term);
+      return (
+        item.name.toLowerCase().includes(term) ||
+        item.keywords.some((keyword) => keyword.toLowerCase().includes(term))
+      );
     });
 
     this.state.isSearching = true;
