@@ -95,10 +95,7 @@ class Store {
       .flatMap((category) => category.emojis);
 
     const filteredEmojis = allEmojis.filter((item) => {
-      return (
-        item.name.toLowerCase().includes(term) ||
-        item.keywords.some((keyword) => keyword.toLowerCase().includes(term))
-      );
+      return item.name.toLowerCase().includes(term);
     });
 
     this.state.isSearching = true;
