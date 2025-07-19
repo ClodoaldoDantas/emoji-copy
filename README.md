@@ -72,7 +72,7 @@ https://chromewebstore.google.com/detail/fnichdelhncpnocohahjklimdlmjjeij?utm_so
 - 🎭 **Símbolos**: Símbolos diversos
 - 🏳️ **Bandeiras**: Bandeiras de países
 
-## 🛠️ Tecnologias Utilizadas
+## 🚀 Tecnologias Utilizadas
 
 - **Manifest V3**: Padrão mais recente para extensões Chrome
 - **JavaScript ES6+**: Módulos, async/await, classes
