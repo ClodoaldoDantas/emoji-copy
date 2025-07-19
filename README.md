@@ -9,7 +9,6 @@ Uma extensão simples e elegante para Chrome que permite copiar emojis para a á
 - [Funcionalidades](#-funcionalidades)
 - [Instalação](#-instalação)
 - [Como Usar](#-como-usar)
-- [Estrutura do Projeto](#-estrutura-do-projeto)
 - [Tecnologias Utilizadas](#-tecnologias-utilizadas)
 - [Desenvolvimento](#-desenvolvimento)
 - [Licença](#-licença)
@@ -27,7 +26,7 @@ Uma extensão simples e elegante para Chrome que permite copiar emojis para a á
 
 ### Instalação via Chrome Web Store
 
-_Em breve - a extensão será publicada na Chrome Web Store_
+https://chromewebstore.google.com/detail/fnichdelhncpnocohahjklimdlmjjeij?utm_source=item-share-cb
 
 ### Instalação Manual (Modo Desenvolvedor)
 
