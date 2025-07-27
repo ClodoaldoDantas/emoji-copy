@@ -9,6 +9,8 @@
     "astro": "astro"
   },
   "dependencies": {
+    "@fontsource/inconsolata": "^5.2.6",
+    "@fontsource/inter": "^5.2.6",
     "astro": "^5.12.3"
   },
   "devDependencies": {
