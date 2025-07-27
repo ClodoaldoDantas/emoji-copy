@@ -2,6 +2,9 @@
 import '@fontsource/inter/400.css'
 import '@fontsource/inter/700.css'
 import '@fontsource/inconsolata/600.css'
+
+import Header from '../components/Header.astro'
+import { appInfo } from '../utils/app-info'
 ---
 
 <html lang="pt-BR">
@@ -10,9 +13,12 @@ import '@fontsource/inconsolata/600.css'
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <meta name="viewport" content="width=device-width" />
     <meta name="generator" content={Astro.generator} />
-    <title>Emoji Copy</title>
+    <meta name="description" content={appInfo.description} />
+    <meta name="keywords" content={appInfo.keywords} />
+    <title>{appInfo.title}</title>
   </head>
   <body>
+    <Header />
     <slot />
   </body>
 </html>
@@ -44,5 +50,31 @@ import '@fontsource/inconsolata/600.css'
     font-family: 'Inter', sans-serif;
     line-height: 1.5;
     -webkit-font-smoothing: antialiased;
+    color: var(--gray-400);
+  }
+
+  h1,
+  h2,
+  h3,
+  strong {
+    font-weight: 700;
+    color: var(--gray-500);
+  }
+
+  a {
+    text-decoration: none;
+    display: inline-block;
+  }
+
+  img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+  }
+
+  .container {
+    max-width: 860px;
+    margin: 0 auto;
+    padding: 0 1rem;
   }
 </style>

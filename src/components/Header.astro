@@ -1,0 +1,54 @@
+---
+import logoImg from '../assets/logo.svg'
+import githubImg from '../assets/github.png'
+import { Image } from 'astro:assets'
+import { appInfo } from '../utils/app-info.ts'
+---
+
+<header class="header">
+  <div class="header-content container">
+    <Image src={logoImg} alt="Emoji Copy Logo" height={48} width={48} />
+
+    <a
+      href={appInfo.repository}
+      target="_blank"
+      rel="noopener noreferrer"
+      class="header-link"
+    >
+      Código Fonte
+      <Image src={githubImg} alt="GitHub Logo" height={24} width={24} />
+    </a>
+  </div>
+</header>
+
+<style>
+  .header {
+    padding: 1rem 0;
+  }
+
+  .header-content {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .header-link {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    color: var(--gray-400);
+    transition: all 0.2s;
+  }
+
+  .header-link img {
+    opacity: 0.8;
+  }
+
+  .header-link:hover {
+    color: var(--gray-500);
+  }
+
+  .header-link:hover img {
+    opacity: 1;
+  }
+</style>
