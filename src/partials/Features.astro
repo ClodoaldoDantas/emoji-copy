@@ -1,0 +1,69 @@
+---
+const features = [
+  {
+    icon: '🔍',
+    title: 'Busca Inteligente',
+    description: 'Pesquise emojis por nome ou palavras-chave em português',
+  },
+  {
+    icon: '📂',
+    title: 'Categorias Organizadas',
+    description:
+      'Emojis organizados em categorias temáticas (Rostos, Objetos, Natureza, etc.)',
+  },
+  {
+    icon: '⏰',
+    title: 'Recentes',
+    description: 'Histórico dos emojis mais utilizados recentemente',
+  },
+  {
+    icon: '📋',
+    title: 'Cópia Instantânea',
+    description:
+      'Clique uma vez para copiar o emoji para a área de transferência',
+  },
+]
+---
+
+<section class="features-section container">
+  <div class="features-grid">
+    {
+      features.map((feature) => (
+        <div class="feature">
+          <span class="feature-icon">{feature.icon}</span>
+          <h3 class="feature-title">{feature.title}</h3>
+          <p class="feature-description">{feature.description}</p>
+        </div>
+      ))
+    }
+  </div>
+</section>
+
+<style>
+  .features-section {
+    margin-bottom: 6.4rem;
+  }
+
+  .features-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(360px, 1fr));
+    gap: 1.5rem;
+  }
+
+  .feature {
+    padding: 1.5rem;
+    background-color: var(--gray-200);
+    border-radius: 8px;
+  }
+
+  .feature-icon {
+    font-size: 2rem;
+    display: block;
+    margin-bottom: 0.75rem;
+  }
+
+  .feature-title {
+    font-size: 1.125rem;
+    margin-bottom: 0.5rem;
+  }
+</style>
