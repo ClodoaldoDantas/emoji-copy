@@ -8,4 +8,8 @@ export const appInfo = {
   version: '1.0',
   size: '63.9KiB',
   platform: 'Chrome Web Store',
+  author: {
+    name: 'Clodoaldo Dantas',
+    site: 'https://clodoaldodantas.github.io/',
+  },
 }

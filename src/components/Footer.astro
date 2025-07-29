@@ -1,0 +1,34 @@
+---
+import { appInfo } from '../utils/app-info'
+
+const currentYear = new Date().getFullYear()
+---
+
+<footer class="footer container">
+  <p class="footer-text">
+    © {currentYear} Desenvolvido por
+    <a href={appInfo.author.site} target="_blank" rel="noopener noreferrer">
+      {appInfo.author.name}
+    </a>
+  </p>
+</footer>
+
+<style>
+  .footer {
+    padding-bottom: 5rem;
+  }
+
+  .footer-text {
+    text-align: center;
+    font-size: 1rem;
+  }
+
+  .footer-text a {
+    color: inherit;
+    transition: color 0.2s;
+  }
+
+  .footer-text a:hover {
+    color: var(--blue-500);
+  }
+</style>
