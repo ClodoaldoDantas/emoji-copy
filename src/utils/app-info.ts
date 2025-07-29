@@ -5,4 +5,7 @@ export const appInfo = {
   keywords: 'emoji, copiar, extensão, chrome',
   url: 'https://chromewebstore.google.com/detail/fnichdelhncpnocohahjklimdlmjjeij?utm_source=item-share-cb',
   repository: 'https://github.com/ClodoaldoDantas/emoji-copy',
+  version: '1.0',
+  size: '63.9KiB',
+  platform: 'Chrome Web Store',
 }

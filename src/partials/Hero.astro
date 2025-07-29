@@ -1,0 +1,93 @@
+---
+import coverImg from '../assets/cover.png'
+import { Image } from 'astro:assets'
+import { appInfo } from '../utils/app-info'
+---
+
+<section class="hero">
+  <div class="hero-content container">
+    <h1>🎯 A maneira mais rápida de usar emojis no navegador</h1>
+
+    <a href={appInfo.url} target="_blank" rel="noopener noreferrer">
+      Baixar extensão
+    </a>
+
+    <div class="hero-info">
+      <span>Versão {appInfo.version}</span>
+      <span>{appInfo.size}</span>
+      <span>Plataforma: {appInfo.platform}</span>
+    </div>
+  </div>
+
+  <figure class="hero-image">
+    <Image src={coverImg} alt="Seletor de emojis da extensão" />
+  </figure>
+</section>
+
+<style>
+  .hero {
+    margin: 1.25rem 0 4rem;
+  }
+
+  .hero-content {
+    text-align: center;
+  }
+
+  .hero-content h1 {
+    font-size: clamp(2rem, 1.8904rem + 0.4494vw, 2.25rem);
+    line-height: 1.1;
+    color: var(--gray-500);
+
+    width: min(100%, 625px);
+    margin: 0 auto 1.5rem;
+  }
+
+  .hero-content a {
+    padding: 0.625rem;
+    width: 15rem;
+
+    font-size: 1rem;
+    font-weight: 700;
+    border: 0;
+    border-radius: 10px;
+
+    background-color: var(--blue-500);
+    color: var(--white);
+    transition: background-color 0.2s;
+  }
+
+  .hero-content a:hover {
+    background-color: var(--blue-600);
+  }
+
+  .hero-info {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 1.5rem 0 2.25rem;
+  }
+
+  .hero-info span {
+    font-family: 'Inconsolata', monospace;
+    font-size: 0.875rem;
+    color: var(--gray-300);
+  }
+
+  .hero-info span:not(:last-child)::after {
+    content: '|';
+    margin: 0 0.375rem;
+  }
+
+  .hero-image img {
+    min-height: 340px;
+    object-fit: cover;
+  }
+
+  @media only screen and (min-width: 768px) {
+    .hero-image {
+      width: min(100%, 860px);
+      margin: 0 auto;
+      padding: 0 1rem;
+    }
+  }
+</style>
