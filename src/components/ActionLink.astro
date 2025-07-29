@@ -1,0 +1,37 @@
+---
+import type { HTMLAttributes } from 'astro/types'
+
+export interface Props extends HTMLAttributes<'a'> {}
+
+const { href, ...props } = Astro.props
+---
+
+<a
+  href={href}
+  target="_blank"
+  rel="noopener noreferrer"
+  class="action-link"
+  {...props}
+>
+  Baixar extensão
+</a>
+
+<style>
+  .action-link {
+    padding: 0.625rem;
+    width: 15rem;
+
+    font-size: 1rem;
+    font-weight: 700;
+    border: 0;
+    border-radius: 10px;
+
+    background-color: var(--blue-500);
+    color: var(--white);
+    transition: background-color 0.2s;
+  }
+
+  .action-link:hover {
+    background-color: var(--blue-600);
+  }
+</style>

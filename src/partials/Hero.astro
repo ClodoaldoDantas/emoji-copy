@@ -1,16 +1,14 @@
 ---
+import ActionLink from '../components/ActionLink.astro'
 import coverImg from '../assets/cover.png'
 import { Image } from 'astro:assets'
-import { appInfo } from '../utils/app-info'
+import { appInfo } from '../data/app-info'
 ---
 
 <section class="hero">
   <div class="hero-content container">
     <h1>🎯 A maneira mais rápida de usar emojis no navegador</h1>
-
-    <a href={appInfo.url} target="_blank" rel="noopener noreferrer">
-      Baixar extensão
-    </a>
+    <ActionLink href={appInfo.url}>Baixar extensão</ActionLink>
 
     <div class="hero-info">
       <span>Versão {appInfo.version}</span>
@@ -40,24 +38,6 @@ import { appInfo } from '../utils/app-info'
 
     width: min(100%, 625px);
     margin: 0 auto 1.5rem;
-  }
-
-  .hero-content a {
-    padding: 0.625rem;
-    width: 15rem;
-
-    font-size: 1rem;
-    font-weight: 700;
-    border: 0;
-    border-radius: 10px;
-
-    background-color: var(--blue-500);
-    color: var(--white);
-    transition: background-color 0.2s;
-  }
-
-  .hero-content a:hover {
-    background-color: var(--blue-600);
   }
 
   .hero-info {
