@@ -1,43 +1,73 @@
-# Astro Starter Kit: Minimal
+# Emoji Copy
 
-```sh
-npm create astro@latest -- --template minimal
+Este é o site oficial da extensão **Emoji Copy** para Google Chrome, desenvolvido com [Astro](https://astro.build/).
+
+## 📝 Sobre o Projeto
+
+O site apresenta e promove a extensão Emoji Copy, uma ferramenta simples e eficiente para copiar emojis diretamente para a área de transferência. O site destaca as principais funcionalidades da extensão e fornece links para download na Chrome Web Store.
+
+## 🚀 Funcionalidades da Extensão
+
+- **🔍 Busca Inteligente**: Pesquise emojis por nome ou palavras-chave em português
+- **📂 Categorias Organizadas**: Emojis organizados em categorias temáticas (Rostos, Objetos, Natureza, etc.)
+- **⏰ Recentes**: Histórico dos emojis mais utilizados recentemente
+- **📋 Cópia Instantânea**: Clique uma vez para copiar o emoji para a área de transferência
+
+## 📦 Instalação e Desenvolvimento
+
+### Pré-requisitos
+
+- Node.js (versão 18 ou superior)
+- npm ou yarn
+
+### Passos para instalação
+
+1. Clone o repositório:
+
+```bash
+git clone https://github.com/ClodoaldoDantas/emoji-copy.git
+cd emoji-copy
 ```
 
-> 🧑‍🚀 **Seasoned astronaut?** Delete this file. Have fun!
+2. Instale as dependências:
 
-## 🚀 Project Structure
+```bash
+npm install
+```
 
-Inside of your Astro project, you'll see the following folders and files:
+3. Execute o servidor de desenvolvimento:
 
-```text
-/
+```bash
+npm run dev
+```
+
+4. Abra o navegador em `http://localhost:4321`
+
+## 📋 Scripts Disponíveis
+
+- `npm run dev` - Inicia o servidor de desenvolvimento
+- `npm run build` - Gera a build de produção
+- `npm run preview` - Visualiza a build de produção localmente
+
+## 📁 Estrutura do Projeto
+
+```
 ├── public/
+│   └── favicon.ico
 ├── src/
-│   └── pages/
-│       └── index.astro
-└── package.json
+│   ├── assets/          # Imagens e recursos estáticos
+│   ├── components/      # Componentes Astro reutilizáveis
+│   ├── data/           # Dados estáticos da aplicação
+│   ├── layouts/        # Layouts base
+│   ├── pages/          # Páginas do site
+│   └── partials/       # Seções/partes da página
+├── astro.config.mjs    # Configuração do Astro
+├── package.json
+└── tsconfig.json
 ```
 
-Astro looks for `.astro` or `.md` files in the `src/pages/` directory. Each page is exposed as a route based on its file name.
+## 🔗 Links Importantes
 
-There's nothing special about `src/components/`, but that's where we like to put any Astro/React/Vue/Svelte/Preact components.
-
-Any static assets, like images, can be placed in the `public/` directory.
-
-## 🧞 Commands
-
-All commands are run from the root of the project, from a terminal:
-
-| Command                   | Action                                           |
-| :------------------------ | :----------------------------------------------- |
-| `npm install`             | Installs dependencies                            |
-| `npm run dev`             | Starts local dev server at `localhost:4321`      |
-| `npm run build`           | Build your production site to `./dist/`          |
-| `npm run preview`         | Preview your build locally, before deploying     |
-| `npm run astro ...`       | Run CLI commands like `astro add`, `astro check` |
-| `npm run astro -- --help` | Get help using the Astro CLI                     |
-
-## 👀 Want to learn more?
-
-Feel free to check [our documentation](https://docs.astro.build) or jump into our [Discord server](https://astro.build/chat).
+- **Extensão na Chrome Web Store**: [Emoji Copy](https://chromewebstore.google.com/detail/fnichdelhncpnocohahjklimdlmjjeij?utm_source=item-share-cb)
+- **Repositório da Extensão**: [GitHub](https://github.com/ClodoaldoDantas/emoji-copy-extension)
+- **Site do Autor**: [Clodoaldo Dantas](https://clodoaldodantas.github.io/)
