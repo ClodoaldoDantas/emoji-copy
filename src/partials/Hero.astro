@@ -1,6 +1,7 @@
 ---
 import ActionLink from '../components/ActionLink.astro'
 import coverImg from '../assets/cover.png'
+import downloadIcon from '../assets/download-icon.svg'
 import { Image } from 'astro:assets'
 import { appInfo } from '../data/app-info'
 ---
@@ -8,7 +9,11 @@ import { appInfo } from '../data/app-info'
 <section class="hero">
   <div class="hero-content container">
     <h1>A maneira mais rápida de usar emojis no navegador</h1>
-    <ActionLink href={appInfo.url}>Baixar extensão</ActionLink>
+
+    <ActionLink href={appInfo.url}>
+      <Image src={downloadIcon} width={24} height={24} alt="" />
+      Baixar extensão
+    </ActionLink>
 
     <div class="hero-info">
       <span>Versão {appInfo.version}</span>
@@ -28,6 +33,9 @@ import { appInfo } from '../data/app-info'
   }
 
   .hero-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
     text-align: center;
   }
 

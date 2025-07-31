@@ -13,13 +13,13 @@ const { href, ...props } = Astro.props
   class="action-link"
   {...props}
 >
-  Baixar extensão
+  <slot />
 </a>
 
 <style>
   .action-link {
-    padding: 0.625rem;
-    width: 15rem;
+    padding: 0.625rem 2rem;
+    width: fit-content;
 
     font-size: 1rem;
     font-weight: 700;
@@ -29,6 +29,11 @@ const { href, ...props } = Astro.props
     background-color: var(--blue-500);
     color: var(--white);
     transition: background-color 0.2s;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
   }
 
   .action-link:hover {
